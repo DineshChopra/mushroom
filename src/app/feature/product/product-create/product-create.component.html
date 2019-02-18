@@ -1,0 +1,22 @@
+<p>
+    customer-create works!
+  </p>
+  <div>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <input 
+            formControlName="name" 
+            type="text" 
+            placeholder="Name" 
+            class="form-control">
+          <input 
+            formControlName="type" 
+            type="text" 
+            placeholder="Phone" 
+            class="form-control">
+          
+                    
+        <button type="submit">{{action}}</button>
+        <button (click)="cancel()">Cancel</button>
+      </form>
+  </div>
+  

@@ -1,0 +1,13 @@
+<div *ngIf="!selectedProduct">
+  <div>
+    <button (click)="updateSelectedProduct()">Create Product</button>
+  </div>
+  <app-product-list
+    [products]="products"></app-product-list>
+</div>
+<app-product-create 
+  *ngIf="selectedProduct"
+  [product] = "selectedProduct"
+  (productCreateEvent) = "onProductCreateEvent($event)"
+  (cancelEvent) = "onCancelEvent()"
+  ></app-product-create>

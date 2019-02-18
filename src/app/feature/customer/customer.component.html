@@ -1,0 +1,16 @@
+<div *ngIf="!selectedCustomer">
+  <div>
+    <button (click)="updateSelectedCustomer()">Create Customer</button>
+  </div>
+  <app-customer-list
+    [customers]="customers"
+    (editCustomerEvent)="onEditCustomerEvent($event)"
+    (deleteCustomerEvent)="onDeleteCustomerEvent($event)"
+    ></app-customer-list>
+</div>
+<app-customer-create
+  *ngIf="selectedCustomer"
+  [customer] = "selectedCustomer"
+  (customerCreateEvent) = "onCustomerCreateEvent($event)"
+  (cancelEvent) = "onCancelEvent()"
+  ></app-customer-create>
