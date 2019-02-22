@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { products } from './product.data';
+import { ProductService } from './product.service';
+import { Product } from './product.model';
 
 @Component({
   selector: 'app-product',
@@ -8,17 +9,40 @@ import { products } from './product.data';
 })
 export class ProductComponent implements OnInit {
 
-  products = products;
+  products = [];
   selectedProduct = undefined;
-  constructor() { }
+  constructor(private productService: ProductService) { }
 
   ngOnInit() {
+    this.getProducts();
   }
-  updateSelectedProduct() {
-    this.selectedProduct = {};
+  getProducts() {
+    this.productService.getProducts().subscribe(
+      (data) => { this.products = data; }
+    );
   }
-  onProductCreateEvent() {
-    
+  updateSelectedProduct(procuct = new Product()) {
+    this.selectedProduct = procuct;
+  }
+  onProductCreateEvent(product: Product) {
+    this.productService.productCreate(product).subscribe(
+      (data) => {
+        this.selectedProduct = undefined;
+        this.getProducts();
+      }
+    );
+  }
+
+  onEditProductEvent(product: Product) {
+    this.selectedProduct = product;
+    // this.onProductCreateEvent(product);
+  }
+  onDeleteProductEvent(product: Product) {
+    this.productService.deleteProduct(product).subscribe(
+      data => {
+        this.getProducts();
+      }
+    );
   }
 
 }

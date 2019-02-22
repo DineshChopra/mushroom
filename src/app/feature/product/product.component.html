@@ -3,7 +3,9 @@
     <button (click)="updateSelectedProduct()">Create Product</button>
   </div>
   <app-product-list
-    [products]="products"></app-product-list>
+    [products]="products"
+    (editProductEvent) = "onEditProductEvent($event)"
+    (deleteProductEvent) = "onDeleteProductEvent($event)"></app-product-list>
 </div>
 <app-product-create 
   *ngIf="selectedProduct"

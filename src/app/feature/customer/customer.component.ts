@@ -21,7 +21,8 @@ export class CustomerComponent implements OnInit {
   getCustomers() {
     this.customerService.getCustomers().subscribe(
       (data) => {
-        this.customers = UtilService.cloneObject(data);
+        // this.customers = data['customers'];
+        this.customers = data;
       }
     );
   }

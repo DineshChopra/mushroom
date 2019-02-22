@@ -17,11 +17,11 @@ export class ProductListComponent implements OnInit {
   }
 
   onEditProduct(product: any) {
-    this.editProductEvent.emit();
+    this.editProductEvent.emit(product);
   }
 
   onDeleteProduct(product: any) {
-    this.deleteProductEvent.emit();
+    this.deleteProductEvent.emit(product);
   }
 
 }

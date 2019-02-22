@@ -11,7 +11,7 @@
     <tbody>
       <tr *ngFor="let product of products; trackBy: trackById;" >
         <td>{{product.name}}</td>
-        <td>{{product.type}}</td>
+        <td>{{product.productType}}</td>
         <td (click)="onEditProduct(product)">Edit</td>
         <td (click)="onDeleteProduct(product)">Delete</td>
       </tr>

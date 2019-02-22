@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Product } from '../product.model';
 
 @Component({
@@ -9,16 +9,17 @@ import { Product } from '../product.model';
 })
 export class ProductCreateComponent implements OnInit, OnChanges {
 
-  @Input() product;
+  @Input() product: Product;
   @Output() productCreateEvent = new EventEmitter();
   @Output() cancelEvent = new EventEmitter();
   form: FormGroup;
 
-  action: string;
+  action = 'Save';
 
-  constructor() { }
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
+    this.initializeForm();
   }
   ngOnChanges() {
     if (this.product) {
@@ -33,6 +34,14 @@ export class ProductCreateComponent implements OnInit, OnChanges {
     let product = this.form.value as Product;
     product = {...this.product, ...product};
     this.productCreateEvent.emit(product);
+  }
+
+  private initializeForm(): void {
+    const {name, productType} = this.product;
+    this.form = this.fb.group({
+      name: [name, [Validators.required]],
+      productType: [productType, [Validators.required]],
+    });
   }
 
 }
