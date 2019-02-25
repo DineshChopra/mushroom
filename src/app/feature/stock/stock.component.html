@@ -1,3 +1,18 @@
-<p>
-  stock works!
-</p>
+<div *ngIf="!selectedStock">
+  <div>
+    <button (click)="updateSelectedStock()">Create Stock</button>
+  </div>
+  <app-stock-list
+    [stocks]="stocks"
+    [products] = "products"
+    (editStockEvent) = "onEditStockEvent($event)"
+    (deleteStockEvent) = "onDeletestockEvent($event)">
+  </app-stock-list>
+</div>
+<app-stock-create 
+  *ngIf="selectedStock"
+  [stock] = "selectedStock"
+  [products] = "products"
+  (stockCreateEvent) = "onStockCreateEvent($event)"
+  (cancelEvent) = "onCancelEvent()">
+</app-stock-create>

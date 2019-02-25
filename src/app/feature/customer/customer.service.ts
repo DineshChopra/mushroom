@@ -4,18 +4,14 @@ import { of, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { Customer } from './customer.model';
-import { environment } from '../../../environments/environment';
 
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomerService {
 
-  private readonly customersUrl =  environment.apiBaseUrl +  'customers';  // URL to web api
+  private readonly customersUrl =  'customers';  // URL to web api
 
   constructor(private http: HttpClient) { }
 
@@ -43,12 +39,12 @@ export class CustomerService {
 
   /** POST: add a new customer to the server */
   addCustomer(customer: Customer): Observable<Customer> {
-    return this.http.post<Customer>(this.customersUrl, customer, httpOptions);
+    return this.http.post<Customer>(this.customersUrl, customer);
   }
     /** PUT: update the customer on the server */
   updateCustomer(customer: Customer): Observable<any> {
     const url = `${this.customersUrl}/${customer.id}`;
-    return this.http.put(url, customer, httpOptions);
+    return this.http.put(url, customer);
   }
 
   /** DELETE: delete the customer from the server */
@@ -56,7 +52,7 @@ export class CustomerService {
     const id = typeof customer === 'string' ? customer : customer.id;
     const url = `${this.customersUrl}/${id}`;
 
-    return this.http.delete<Customer>(url, httpOptions);
+    return this.http.delete<Customer>(url);
   }
 
 
