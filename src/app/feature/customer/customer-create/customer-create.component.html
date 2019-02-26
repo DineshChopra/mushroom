@@ -1,10 +1,15 @@
-<div>
+<div class="container-fluid">
+  <div class="row">
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
-        <input 
+      <div class="form-group">
+        <label for="customerName">Customer Name</label>
+        <input
+          id="customerName"
+          class="form-control"
           formControlName="name" 
           type="text" 
-          placeholder="Name" 
-          class="form-control">
+          placeholder="Customer Name">
+      </div>
         <input 
           formControlName="phone" 
           type="text" 
@@ -19,4 +24,5 @@
       <button type="submit">{{action}}</button>
       <button (click)="cancel()">Cancel</button>
     </form>
+  </div>
 </div>
