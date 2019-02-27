@@ -16,11 +16,11 @@ export class ProductService {
     return this.http.get<any[]>(this.productUrl)
                     .pipe(
                       map( data => {
-                        return data.map(customer => {
-                          const {name, productType} = customer;
-                          const id = customer._id;
+                        return data.map(product => {
+                          const {name, productType, stock} = product;
+                          const id = product._id;
                           return {
-                            id, name, productType
+                            id, name, productType, stock
                           };
                         });
                       })

@@ -4,6 +4,7 @@
       <tr>
         <th>Name</th>
         <th>Type</th>
+        <th>Available Stock</th>
         <th>Edit</th>
         <th>Delete</th>
       </tr>
@@ -12,6 +13,7 @@
       <tr *ngFor="let product of products; trackBy: trackById;" >
         <td>{{product.name}}</td>
         <td>{{product.productType}}</td>
+        <td>{{product.stock}}</td>
         <td (click)="onEditProduct(product)">Edit</td>
         <td (click)="onDeleteProduct(product)">Delete</td>
       </tr>

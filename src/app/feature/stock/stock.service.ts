@@ -18,10 +18,10 @@ export class StockService {
       .pipe(
         map(data => {
           return data.map(stock => {
-            const { productId, price, quantity, totalPrice, purchaseDate } = stock;
+            const { product, price, quantity, totalPrice, purchaseDate } = stock;
             const id = stock._id;
             return {
-              id, productId, price, quantity, totalPrice, purchaseDate
+              id, product, price, quantity, totalPrice, purchaseDate
             };
           });
         })

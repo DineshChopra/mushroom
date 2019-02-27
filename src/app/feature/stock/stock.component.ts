@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Stock } from './stock.model';
 import { StockService } from './stock.service';
 import { ProductService } from '../product/product.service';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-stock',
@@ -17,17 +18,18 @@ export class StockComponent implements OnInit {
     private productService: ProductService) { }
 
   ngOnInit() {
-    this.getData();
+    this.getStocksData();
   }
 
   updateSelectedStock(stock = new Stock()) {
+    this.getProductsData();
     this.selectedStock = stock;
   }
   onStockCreateEvent(stock: Stock) {
     this.stockService.stockCreate(stock).subscribe(
       (data) => {
         this.selectedStock = undefined;
-        this.getData();
+        this.getStocksData();
       }
     );
   }
@@ -35,25 +37,23 @@ export class StockComponent implements OnInit {
     this.selectedStock = undefined;
   }
   onEditStockEvent(stock: Stock) {
-    this.selectedStock = stock;
+    this.updateSelectedStock(stock);
   }
   onDeletestockEvent(stock: Stock) {
     this.stockService.deleteStock(stock).subscribe(
       data => {
-        this.getData();
+        this.getStocksData();
       }
     );
   }
-  private getData() {
-    this.getStocks().subscribe(
-      (stocksData) => {
-        this.stocks = stocksData;
-      }
+  private getStocksData() {
+    this.stockService.getStocks().subscribe(
+      (stockData) => { this.stocks = stockData; }
     );
   }
-
-  private getStocks() {
-    return this.stockService.getStocks();
+  private getProductsData() {
+    this.productService.getProducts().subscribe(
+      (productData) => { this.products = productData; }
+    );
   }
-
 }
