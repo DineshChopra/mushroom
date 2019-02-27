@@ -13,7 +13,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let stock of stocks; trackBy: trackById;" >
-        <td>{{stock.productName}}</td>
+        <td>{{stock.productId.name}}</td>
         <td>{{stock.price}}</td>
         <td>{{stock.quantity}}</td>
         <td>{{stock.totalPrice}}</td>
