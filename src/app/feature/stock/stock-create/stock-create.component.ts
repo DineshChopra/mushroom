@@ -52,13 +52,17 @@ export class StockCreateComponent implements OnInit, OnChanges {
   }
 
   private initializeForm(): void {
-    const { productId, price, quantity, totalPrice } = this.stock;
+    const { price, quantity, totalPrice } = this.stock;
+    let productId: string;
+    if (this.stock.id) {
+      productId = this.stock['product']['_id'];
+    }
     const currentDate = this.datePipe.transform(new Date(), 'fullDate');
     this.form = this.fb.group({
       productId: [productId, []],
       price: [price, []],
       quantity: [quantity, []],
-      totalPrice: [{value: 0, disabled: true}],
+      totalPrice: [{ value: 0, disabled: true }],
       purchaseDate: [{ value: currentDate, disabled: true }],
     });
   }
