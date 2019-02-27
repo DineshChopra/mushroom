@@ -17,6 +17,7 @@ h1 {
     background-color: #eee;
     border-radius: 4px;
     margin-right: 20px;
+    font-size: 1em;
   }
   nav a:visited, a:link {
     color: #607D8B;
@@ -27,6 +28,9 @@ h1 {
   }
   nav a.active {
     color: #039be5;
+    padding: 6px 11px;
+    font-size: 1.2em;
+    background-color: #CFD8DC;
   }
   
   

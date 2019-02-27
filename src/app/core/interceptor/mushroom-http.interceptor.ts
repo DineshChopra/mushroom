@@ -13,7 +13,6 @@ export class MushroomHttpInterceptor implements HttpInterceptor {
 
     private readonly apiBaseUrl = environment.apiBaseUrl;  // URL to web api
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        console.log('request : ', req);
         if (!req.headers.has('Content-Type')) {
             req = req.clone({ headers: req.headers.set('Content-Type', 'application/json') });
         }

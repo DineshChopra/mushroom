@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Stock } from './stock.model';
 import { StockService } from './stock.service';
 import { ProductService } from '../product/product.service';
-import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-stock',
