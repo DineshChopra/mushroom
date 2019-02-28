@@ -2,7 +2,6 @@ import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angu
 import { Stock } from '../stock.model';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { DatePipe } from '@angular/common';
-import { ProductService } from '../../product/product.service';
 import { Product } from '../../product/product.model';
 
 @Component({

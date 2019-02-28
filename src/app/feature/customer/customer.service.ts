@@ -20,10 +20,10 @@ export class CustomerService {
                     .pipe(
                       map( data => {
                         return data.map(customer => {
-                          const {name, phone, email} = customer;
+                          const {name, phone, email, balance, balanceLimit} = customer;
                           const id = customer._id;
                           return {
-                            id, name, phone, email
+                            id, name, phone, email, balance, balanceLimit
                           };
                         });
                       })
@@ -54,7 +54,4 @@ export class CustomerService {
 
     return this.http.delete<Customer>(url);
   }
-
-
-
 }

@@ -5,6 +5,8 @@
       <th>Name</th>
       <th>Phone</th>
       <th>Email</th>
+      <th>Balance</th>
+      <th>BalanceLimit</th>
       <th>Edit</th>
       <th>Delete</th>
     </tr>
@@ -14,6 +16,8 @@
       <td>{{customer.name}}</td>
       <td>{{customer.phone}}</td>
       <td>{{customer.email}}</td>
+      <td>{{customer.balance}}</td>
+      <td>{{customer.balanceLimit}}</td>
       <td (click)="onEditCustomer(customer)">Edit</td>
       <td (click)="onDeleteCustomer(customer)">Delete</td>
     </tr>

@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Sale } from './sale.model';
+import { SaleService } from './sale.service';
+import { CustomerService } from '../customer/customer.service';
+import { ProductService } from '../product/product.service';
+import { Customer } from '../customer/customer.model';
+import { Product } from '../product/product.model';
 
 @Component({
   selector: 'app-sale',
@@ -7,9 +13,55 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SaleComponent implements OnInit {
 
-  constructor() { }
+  selectedSale: Sale;
+  sales: Sale[];
+  customers: Customer[];
+  products: Product[];
+
+  constructor(private saleService: SaleService,
+              private customerService: CustomerService,
+              private productService: ProductService) { }
 
   ngOnInit() {
+    this.getSales();
+  }
+  updateSelectedSale(sale = new Sale()) {
+    this.selectedSale = sale;
+    this.getCustomers();
+    this.getProducts();
+  }
+  getSales() {
+    this.saleService.getSales().subscribe(
+      (salesData) => {
+        this.sales = salesData;
+      });
+  }
+  getCustomers() {
+    this.customerService.getCustomers().subscribe((data) => {
+      this.customers = data;
+    });
+  }
+  getProducts() {
+    this.productService.getProducts().subscribe((data) => {
+      this.products = data;
+    });
+  }
+  onEditSaleEvent(sale: Sale) {
+    this.updateSelectedSale(sale);
+  }
+  onDeleteSaleEvent(sale: Sale) {
+    this.saleService.deleteSale(sale).subscribe(() => {
+      this.getSales();
+    });
+  }
+  onCancelEvent() {
+    this.selectedSale = undefined;
+  }
+  onSaleCreateEvent(sale: Sale) {
+    this.saleService.saleCreate(sale).subscribe(() => {
+      this.getSales();
+      this.selectedSale = undefined;
+    });
   }
 
 }

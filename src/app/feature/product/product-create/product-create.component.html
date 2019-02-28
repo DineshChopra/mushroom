@@ -1,22 +1,10 @@
-<p>
-    customer-create works!
-  </p>
-  <div>
-      <form [formGroup]="form" (ngSubmit)="onSubmit()">
-          <input 
-            formControlName="name" 
-            type="text" 
-            placeholder="Product Name" 
-            class="form-control">
-          <input 
-            formControlName="productType" 
-            type="text" 
-            placeholder="Product Type" 
-            class="form-control">
-          
-                    
-        <button type="submit">{{action}}</button>
-        <button (click)="cancel()">Cancel</button>
-      </form>
-  </div>
-  
+<div>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <input formControlName="name" type="text" placeholder="Product Name" class="form-control">
+    <input formControlName="productType" type="text" placeholder="Product Type" class="form-control">
+
+
+    <button type="submit">{{action}}</button>
+    <button (click)="cancel()">Cancel</button>
+  </form>
+</div>

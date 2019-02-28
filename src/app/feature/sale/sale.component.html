@@ -1,3 +1,17 @@
-<p>
-  sale works!
-</p>
+<div *ngIf="!selectedSale">
+  <div>
+    <button (click)="updateSelectedSale()">Create Sale</button>
+  </div>
+  <app-sale-list
+    [sales]="sales"
+    (editSaleEvent) = "onEditSaleEvent($event)"
+    (deleteSaleEvent) = "onDeleteSaleEvent($event)"></app-sale-list>
+</div>
+<app-sale-create 
+  *ngIf="selectedSale"
+  [sale] = "selectedSale"
+  [customers] = "customers"
+  [products] = "products"
+  (saleCreateEvent) = "onSaleCreateEvent($event)"
+  (cancelEvent) = "onCancelEvent()"
+  ></app-sale-create>

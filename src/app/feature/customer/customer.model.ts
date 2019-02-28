@@ -3,4 +3,6 @@ export class Customer {
     name: string;
     phone: string;
     email: string;
+    balance: string;
+    balanceLimit: string;
 }
