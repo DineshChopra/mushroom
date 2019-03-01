@@ -18,19 +18,26 @@ export class SaleCreateComponent implements OnInit, OnChanges {
   @Output() saleCreateEvent = new EventEmitter();
   @Output() cancelEvent = new EventEmitter();
   form: FormGroup;
+  isEditMode = false;
   action = 'Save';
+  customerBalance: any;
+  productStock: any;
 
   private datePipe = new DatePipe(navigator.language);
 
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
-    this.initializeForm();
-  }
-  ngOnChanges() {
     if (this.sale) {
       this.action = this.sale._id ? 'Edit' : 'Save';
+      this.isEditMode = true;
     }
+    this.initializeForm();
+    this.setDefaultValues();
+    this.updateCustomerBalance();
+    this.updateProductStock();
+  }
+  ngOnChanges() {
   }
   onSubmit() {
     const sale = this.form.value;
@@ -45,6 +52,38 @@ export class SaleCreateComponent implements OnInit, OnChanges {
   cancel() {
     this.cancelEvent.emit();
   }
+  private setDefaultValues() {
+    if (this.sale._id) {
+      this.setCustomerBalance(this.sale.customer._id);
+      this.setProductStock(this.sale.product._id);
+    }
+  }
+  private setCustomerBalance(customerId) {
+    const customer = this.customers.find( (element: any) => {
+      if (element.id === customerId) {
+        return element;
+      }
+    });
+    this.customerBalance = customer.balance;
+  }
+  private updateCustomerBalance() {
+    this.form.controls['customerId'].valueChanges.subscribe((customerId) => {
+      this.setCustomerBalance(customerId);
+    });
+  }
+  private updateProductStock() {
+    this.form.controls['productId'].valueChanges.subscribe((productId) => {
+      this.setProductStock(productId);
+    });
+  }
+  private setProductStock(productId) {
+    const product = this.products.find( (element: any) => {
+      if (element.id === productId) {
+        return element;
+      }
+    });
+    this.productStock = product['stock'];
+  }
   private initializeForm(): void {
     const { quantity, salePrice, amountRecieved   } = this.sale;
     let { totalPrice, balance } = this.sale;
@@ -58,8 +97,8 @@ export class SaleCreateComponent implements OnInit, OnChanges {
       balance = 0;
     }
     this.form = this.fb.group({
+      customerId: [{value: customerId, disabled: this.isEditMode}],
       productId: [productId, [Validators.required]],
-      customerId: [customerId, [Validators.required]],
       quantity: [quantity, [Validators.required]],
       salePrice: [salePrice],
       totalPrice: [{value: totalPrice, disabled: true}],

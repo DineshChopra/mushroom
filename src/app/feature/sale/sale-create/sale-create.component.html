@@ -2,17 +2,19 @@
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="customerName">Customer Name</label>
-      <select formControlName="customerId">
+      <select formControlName="customerId" (onChange) = "updateCustomerBalance()">
         <option *ngFor="let customer of customers" 
                 [value]="customer.id">{{customer.name}}</option>
       </select>
+      <p *ngIf="customerBalance != undefined">Balance : <strong>{{customerBalance}}</strong></p>
     </div>
     <div class="form-group">
       <label for="productName">Product Name</label>
       <select formControlName="productId">
         <option *ngFor="let product of products" 
-                [value]="product.id">{{product.name}}</option>
+        [value]="product.id">{{product.name}}</option>
       </select>
+      <p *ngIf="productStock != undefined">Stock : <strong>{{productStock}}</strong></p>
     </div>
     <div class="form-group">
       <label for="quantity">Quantity</label>

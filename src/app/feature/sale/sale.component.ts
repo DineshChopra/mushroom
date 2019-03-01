@@ -5,6 +5,7 @@ import { CustomerService } from '../customer/customer.service';
 import { ProductService } from '../product/product.service';
 import { Customer } from '../customer/customer.model';
 import { Product } from '../product/product.model';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-sale',
@@ -26,15 +27,26 @@ export class SaleComponent implements OnInit {
     this.getSales();
   }
   updateSelectedSale(sale = new Sale()) {
-    this.selectedSale = sale;
-    this.getCustomers();
-    this.getProducts();
+    // this.selectedSale = sale;
+    this.getProductCustomerData(sale);
+    // this.getCustomers();
+    // this.getProducts();
   }
   getSales() {
     this.saleService.getSales().subscribe(
       (salesData) => {
         this.sales = salesData;
       });
+  }
+  getProductCustomerData(sale: Sale) {
+    forkJoin(
+      this.customerService.getCustomers(),
+      this.productService.getProducts()
+    ).subscribe(([customerData, productData]) => {
+      this.customers = customerData;
+      this.products = productData;
+      this.selectedSale = sale;
+    });
   }
   getCustomers() {
     this.customerService.getCustomers().subscribe((data) => {
