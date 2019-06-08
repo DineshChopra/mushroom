@@ -38,7 +38,6 @@ export class CustomerCreateComponent implements OnInit, OnChanges {
   onSubmit() {
     let customer = this.form.value as Customer;
     customer = {...this.customer, ...customer};
-    console.log('customer --- ', customer);
     this.customerCreateEvent.emit(customer);
   }
   private initializeForm(): void {

@@ -8,6 +8,7 @@ import { ReportProductListComponent } from './report-product-list/report-product
 import { ReportPurchaseListComponent } from './report-purchase-list/report-purchase-list.component';
 import { ReportStockListComponent } from './report-stock-list/report-stock-list.component';
 import { ReportSaleListComponent } from './report-sale-list/report-sale-list.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ReportSaleListComponent } from './report-sale-list/report-sale-list.com
                 ],
   imports: [
     CommonModule,
-    ReportRoutingModule
+    ReportRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class ReportModule { }

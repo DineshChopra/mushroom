@@ -17,7 +17,6 @@ export class ReportCustomerListComponent implements OnInit {
   getCustomers() {
     this.service.getCustomers().subscribe(
       response => {
-        console.log('Get customer response --- ', response);
         this.customers = response;
       }
     );

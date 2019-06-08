@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -49,9 +49,25 @@ export class ReportService {
                     );
   }
 
-  getSales() {
+  getSales(searchCondition) {
+    let params = new HttpParams();
+    const {customer, product, startDate, endDate} = searchCondition;
+    if (customer) {
+      params = params.append('customerId', searchCondition.customer);
+    }
+    if (product) {
+      params = params.append('productId', searchCondition.product);
+    }
+    if (startDate) {
+      params = params.append('startDate', searchCondition.startDate);
+    }
+    if (endDate) {
+      params = params.append('endDate', searchCondition.endDate);
+    }
+
+
     const url = 'sale';
-    return this.http.get(url)
+    return this.http.get(url, {params})
                     .pipe(
                       map(response => {
                         return response['data'];
