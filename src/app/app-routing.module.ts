@@ -10,7 +10,7 @@ const routes: Routes = [
   {path: 'stock', loadChildren: './feature/stock/stock.module#StockModule'},
   {path: 'chat', loadChildren: './feature/chat/chat.module#ChatModule'},
   {path: 'dashboard', component: DashboardComponent},
-  {path: '', redirectTo: 'chat', pathMatch: 'full'}
+  {path: '', redirectTo: 'report', pathMatch: 'full'}
 ];
 
 @NgModule({

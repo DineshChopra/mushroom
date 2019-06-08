@@ -11,7 +11,7 @@ import { Customer } from './customer.model';
 })
 export class CustomerService {
 
-  private readonly customersUrl =  'customers';  // URL to web api
+  private readonly customersUrl =  'customer';  // URL to web api
 
   constructor(private http: HttpClient) { }
 
