@@ -4,13 +4,15 @@
       <div class="form-group">
         <label for="customer">Customer Name</label>
         <select formControlName="customer">
-          <option *ngFor="let customer of customers" 
+            <option value="" selected>Select Customer</option>
+            <option *ngFor="let customer of customers" 
                   [value]="customer.id">{{customer.name}}</option>
         </select>
       </div>
       <div class="form-group">
         <label for="product">Product Name</label>
         <select formControlName="product">
+          <option value = "" selected>Select Product</option>
           <option *ngFor="let product of products" 
                   [value]="product.id">{{product.name}}</option>
         </select>
