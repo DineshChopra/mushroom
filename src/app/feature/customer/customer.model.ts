@@ -1,8 +1,6 @@
 export class Customer {
     id: number;
     name: string;
-    phone: string;
-    email: string;
-    balance: string;
-    balanceLimit: string;
+    mobileNo: string;
+    address: string;
 }

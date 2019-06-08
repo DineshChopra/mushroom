@@ -37,10 +37,10 @@ export class ProductCreateComponent implements OnInit, OnChanges {
   }
 
   private initializeForm(): void {
-    const {name, productType} = this.product;
+    const {name, desc} = this.product;
     this.form = this.fb.group({
       name: [name, [Validators.required]],
-      productType: [productType, [Validators.required]],
+      desc: [desc, [Validators.required]],
     });
   }
 

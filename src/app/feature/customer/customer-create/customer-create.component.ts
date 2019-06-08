@@ -41,11 +41,11 @@ export class CustomerCreateComponent implements OnInit, OnChanges {
     this.customerCreateEvent.emit(customer);
   }
   private initializeForm(): void {
-    const {name, phone, email} = this.customer;
+    const {name, mobileNo, address} = this.customer;
     this.form = this.fb.group({
       name: [name, [Validators.required]],
-      phone: [phone, [Validators.required]],
-      email: [email, [Validators.required]],
+      mobileNo: [mobileNo, [Validators.required]],
+      address: [address, [Validators.required]],
     });
   }
   private customerCreate() {

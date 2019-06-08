@@ -10,17 +10,22 @@
           type="text" 
           placeholder="Customer Name">
       </div>
-        <input 
-          formControlName="phone" 
+      <div class="form-group">
+          <label for="customerName">Customer Phone</label>
+          <input 
+          formControlName="mobileNo" 
           type="text" 
           placeholder="Phone" 
           class="form-control">
-        <input 
-          formControlName="email" 
+      </div>      
+      <div class="form-group">
+          <label for="customerName">Customer Address</label>
+          <input 
+          formControlName="address" 
           type="text" 
-          placeholder="Email" 
+          placeholder="Address" 
           class="form-control">
-                  
+      </div>      
       <button type="submit">{{action}}</button>
       <button (click)="cancel()">Cancel</button>
     </form>

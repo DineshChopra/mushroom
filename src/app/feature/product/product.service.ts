@@ -9,7 +9,7 @@ import { Product } from './product.model';
 })
 export class ProductService {
 
-  private readonly productUrl = 'products';
+  private readonly productUrl = 'product';
   constructor(private http: HttpClient) { }
 
   getProducts(): Observable<any[]> {

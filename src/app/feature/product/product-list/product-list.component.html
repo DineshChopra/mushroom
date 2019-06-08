@@ -3,19 +3,17 @@
     <thead>
       <tr>
         <th>Name</th>
-        <th>Type</th>
-        <th>Available Stock</th>
-        <th>Edit</th>
-        <th>Delete</th>
+        <th>Description</th>
+        <!-- <th>Edit</th>
+        <th>Delete</th> -->
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let product of products; trackBy: trackById;" >
         <td>{{product.name}}</td>
-        <td>{{product.productType}}</td>
-        <td>{{product.stock}}</td>
-        <td (click)="onEditProduct(product)">Edit</td>
-        <td (click)="onDeleteProduct(product)">Delete</td>
+        <td>{{product.desc}}</td>
+        <!-- <td (click)="onEditProduct(product)">Edit</td>
+        <td (click)="onDeleteProduct(product)">Delete</td> -->
       </tr>
       
     </tbody>

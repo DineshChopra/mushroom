@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { ReportService } from '../../report/report.service';
 
 @Component({
   selector: 'app-product-list',
@@ -11,7 +12,7 @@ export class ProductListComponent implements OnInit {
   @Output() editProductEvent = new EventEmitter();
   @Output() deleteProductEvent = new EventEmitter();
 
-  constructor() { }
+  constructor(private reportService: ReportService) { }
 
   ngOnInit() {
   }
@@ -22,6 +23,10 @@ export class ProductListComponent implements OnInit {
 
   onDeleteProduct(product: any) {
     this.deleteProductEvent.emit(product);
+  }
+
+  trackById(index: number, product: any) {
+    return product.id;
   }
 
 }

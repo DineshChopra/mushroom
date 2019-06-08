@@ -1,8 +1,24 @@
 <div>
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <input formControlName="name" type="text" placeholder="Product Name" class="form-control">
-    <input formControlName="productType" type="text" placeholder="Product Type" class="form-control">
-
+      
+    <div class="form-group">
+      <label for="productName">Product Name</label>
+      <input
+        id="productName"
+        class="form-control"
+        formControlName="name" 
+        type="text" 
+        placeholder="Product Name">
+    </div>
+    <div class="form-group">
+      <label for="productDescription">Product Description</label>
+      <input
+        id="productDescription"
+        class="form-control"
+        formControlName="desc" 
+        type="text" 
+        placeholder="Product Description">
+    </div>
 
     <button type="submit">{{action}}</button>
     <button (click)="cancel()">Cancel</button>
