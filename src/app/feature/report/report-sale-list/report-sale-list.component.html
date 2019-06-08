@@ -17,19 +17,22 @@
                   [value]="product.id">{{product.name}}</option>
         </select>
       </div>
-        
+      <div class="form-group">
+        <label for="startDate">Start Date</label>
         <input 
           formControlName="startDate" 
           type="date"
           placeholder="Start Date" 
           class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="endDate">End Date</label>
         <input 
           formControlName="endDate" 
           type="date"
           placeholder="End Date" 
           class="form-control">
-
-          
+      </div>
                   
       <button type="submit">Search</button>
       <button (click)="cancel()">Cancel</button>
