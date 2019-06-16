@@ -1,0 +1,27 @@
+<div class="container" id="contact-form">
+  <div class="row">
+    <div class="title">
+      <h2>Purchases</h2>
+      <p>Dantes remained confused and silent by this explanation of the <br> thoughts which had unconsciously</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <label for="product_name">Product Name</label>
+        <select class="form-control" id="product_name" formControlName="productId">
+          <option *ngFor="let product of products" [value]="product.id">{{product.name}}</option>
+        </select>
+        <label for="quantity">Quantity</label>
+        <input formControlName="quantity" type="number" class="form-control" id="quantity">
+        <label for="price">Price</label>
+        <input formControlName="price" type="text" id="price" class="form-control">
+
+
+        <button class="btn btn-default" type="submit">{{action}}</button>
+        <button class="btn btn-default" type="button" (click)="cancelPurchaseItem()">Cancel</button>
+      </form>
+    </div>
+  </div>
+</div>

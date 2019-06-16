@@ -1,0 +1,22 @@
+<div *ngIf="!editPurchase">
+  <div class="container innerHeader" >
+    <div class="row">
+      <div class="innerTitle">
+        <h2>Purchase</h2>
+        <p>Dantes remained confused and silent by this explanation of the <br> thoughts which had unconsciously</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <button class="btn btn-default" (click)="createPurchase()">Create Purchase</button>
+      </div>
+    </div>
+  </div>
+
+  <app-purchase-list [purchases]='purchases' (editPurchase)="onEditPurchase($event)"
+    (deletePurchse)="onDeletePurchase($event)"></app-purchase-list>
+
+</div>
+<app-purchase-create *ngIf="editPurchase" [purchases]='purchases' [products]='products'
+  [selectedPurchaseItem]="selectedPurchaseItem" (purchaseCreate)="onPurchaseCreate($event)"
+  (cancelPurchase)="onCancelPurchase()"></app-purchase-create>
