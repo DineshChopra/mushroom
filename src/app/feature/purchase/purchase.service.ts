@@ -17,11 +17,11 @@ export class PurchaseService {
     return this._httpClient.get<any[]>(this.getpurchaseUrl).pipe(
       map(purchase => {
         return purchase['data'].map(data => {
-          const { id, productId, quantity, price, totalPrice } = data;
-          return { id, productId, quantity, price, totalPrice };
-        })
+          const { id, productId, productName, quantity, price, totalPrice } = data;
+          return { id, productId, productName, quantity, price, totalPrice };
+        });
       })
-    )
+    );
   }
   getProducts(): Observable<any[]> {
     return this._httpClient.get<any[]>(this.getProductUrl)

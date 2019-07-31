@@ -3,12 +3,16 @@
       <tr>
         <th>Name</th>
         <th>Phone</th>
+        <th>Address</th>
+        <th>Register Date</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let customer of customers; trackBy: trackById;" >
         <td>{{customer.name}}</td>
         <td>{{customer.mobileNo}}</td>
+        <td>{{customer.address}}</td>
+        <td>{{customer.registerDate}}</td>
       </tr>
     </tbody>
   </table>

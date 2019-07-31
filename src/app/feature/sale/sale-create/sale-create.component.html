@@ -1,82 +1,40 @@
-<div>
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="customerName">Customer Name</label>
-      <select formControlName="customerId" (onChange) = "updateCustomerBalance()">
-        <option *ngFor="let customer of customers" 
-                [value]="customer.id">{{customer.name}}</option>
-      </select>
-      <p *ngIf="customerBalance != undefined">Balance : <strong>{{customerBalance}}</strong></p>
+<div class="container" id="contact-form">
+  <div class="row">
+    <div class="title">
+      <h2>Sales</h2>
     </div>
-    <div class="form-group">
-      <label for="productName">Product Name</label>
-      <select formControlName="productId">
-        <option *ngFor="let product of products" 
-        [value]="product.id">{{product.name}}</option>
-      </select>
-      <p *ngIf="productStock != undefined">Stock : <strong>{{productStock}}</strong></p>
+  </div>
+  <div class="row">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="customerName">Customer Name</label>
+          <select class="form-control" formControlName="customerId">
+            <option *ngFor="let customer of customers" [value]="customer.id">{{customer.name}}</option>
+          </select>
+          
+        </div>
+        <div class="form-group">
+          <label for="productName">Product Name</label>
+          <select formControlName="productId" class="form-control">
+            <option *ngFor="let product of products" [value]="product.id">{{product.name}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="quantity">Quantity</label>
+          <input id="quantity" class="form-control" formControlName="quantity" type="text" 
+            #quantity>
+        </div>
+        <div class="form-group">
+          <label for="salePrice">Price</label>
+          <input id="salePrice" class="form-control" formControlName="price" type="text" 
+            #salePrice>
+        </div>
+       
+        <button class="btn btn-default" type="submit">{{action}}</button>
+        <button class="btn btn-default" (click)="cancel()">Cancel</button>
+      </form>
     </div>
-    <div class="form-group">
-      <label for="quantity">Quantity</label>
-      <input
-        id="quantity"
-        class="form-control"
-        formControlName="quantity" 
-        type="text" 
-        placeholder="Quantity"
-        #quantity>
-    </div>
-    <div class="form-group">
-      <label for="salePrice">Sale Price</label>
-      <input
-        id="salePrice"
-        class="form-control"
-        formControlName="salePrice" 
-        type="text"
-        placeholder="Sale Price"
-        #salePrice>
-    </div>
-    <div class="form-group">
-      <label for="totalPrice">Total Price</label>
-      <input
-        id="totalPrice"
-        class="form-control"
-        formControlName="totalPrice" 
-        type="text" 
-        placeholder="Total Price"
-        #totalPrice
-        [value] = salePrice.value*quantity.value >
-    </div>
-    <div class="form-group">
-      <label for="amountRecieved">Amount Recieved</label>
-      <input
-        id="amountRecieved"
-        class="form-control"
-        formControlName="amountRecieved" 
-        type="text" 
-        placeholder="Amount Recieved"
-        #amountRecieved>
-    </div>
-    <div class="form-group">
-      <label for="balance">Balance</label>
-      <input
-        id="balance"
-        class="form-control"
-        formControlName="balance" 
-        type="text" 
-        placeholder="Balance"
-        [value] = totalPrice.value-amountRecieved.value >
-    </div>
-    <div class="form-group">
-      <label for="saleDate">Sale Date</label>
-      <input
-        id="saleDate"
-        class="form-control"
-        formControlName="saleDate" 
-        type="text" 
-        placeholder="Sale Date">
-    </div>
-    <button type="submit">{{action}}</button>
-    <button (click)="cancel()">Cancel</button>
-  </form>
+  </div>
 </div>

@@ -2,11 +2,15 @@
     <thead>
       <tr>
         <th>Name</th>
+        <th>Description</th>
+        <th>Register Date</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let product of products | async; trackBy: trackById;" >
         <td>{{product.name}}</td>
+        <td>{{product.desc}}</td>
+        <td>{{product.registerDate | date: 'fullDate'}}</td>
       </tr>
     </tbody>
   </table>

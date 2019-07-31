@@ -5,18 +5,16 @@
         <th>Stock Name</th>
         <th>Quantity</th>
         <th>Price</th>
-        <th>Total Price</th>
         <th>Created Date</th>
         <th>Edit</th>
         <th>Delete</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let stock of stocks; trackBy: trackById;" >
-        <td>{{stock?.product?.name}}</td>
+      <tr *ngFor="let stock of stocks;" >
+        <td>{{stock?.productName}}</td>
         <td>{{stock.quantity}}</td>
         <td>{{stock.price}}</td>
-        <td>{{stock.totalPrice}}</td>
         <td>{{stock.purchaseDate | date: 'fullDate'}}</td>
         <td (click)="onEditStock(stock)">Edit</td>
         <td (click)="onDeleteStock(stock)">Delete</td>

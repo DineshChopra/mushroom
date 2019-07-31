@@ -9,7 +9,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let stock of stocks | async; trackBy: trackById;" >
+      <tr *ngFor="let stock of stocks | async;" >
         <td>{{stock.productName}}</td>
         <td>{{stock.quantity}}</td>
         <td>{{stock.price}}</td>

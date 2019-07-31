@@ -35,7 +35,7 @@
       </div>
                   
       <button type="submit">Search</button>
-      <button (click)="cancel()">Cancel</button>
+      <button >Cancel</button>
     </form>
   </div>
 </div>
@@ -52,7 +52,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let sale of sales | async; trackBy: trackById;" >
+    <tr *ngFor="let sale of sales | async;" >
       <td>{{sale.customerName}}</td>
       <td>{{sale.productName}}</td>
       <td>{{sale.quantity}}</td>

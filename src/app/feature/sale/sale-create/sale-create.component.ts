@@ -29,32 +29,29 @@ export class SaleCreateComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     if (this.sale) {
-      this.action = this.sale._id ? 'Edit' : 'Save';
+      this.action = this.sale.productId ? 'Update' : 'Save';
       this.isEditMode = true;
     }
     this.initializeForm();
-    this.setDefaultValues();
+    /* this.setDefaultValues();
     this.updateCustomerBalance();
-    this.updateProductStock();
+    this.updateProductStock(); */
   }
   ngOnChanges() {
   }
   onSubmit() {
     const sale = this.form.value;
-    const {productId, customerId, quantity, salePrice, amountRecieved, saleDate} = sale;
-    const totalPrice = quantity * salePrice;
-    const balance = totalPrice - amountRecieved;
-    let saleObj = {product: productId, customer: customerId, quantity, salePrice, totalPrice, amountRecieved, balance, saleDate};
-    saleObj.saleDate = new Date();
+    const { productId, customerId, quantity, price } = sale;
+    let saleObj = { productId: productId, customerId: customerId, quantity, price};
     saleObj = { ...this.sale, ...saleObj };
     this.saleCreateEvent.emit(saleObj);
   }
   cancel() {
     this.cancelEvent.emit();
   }
-  private setDefaultValues() {
-    if (this.sale._id) {
-      this.setCustomerBalance(this.sale.customer._id);
+  /* private setDefaultValues() {
+    if (this.sale.productId) {
+      this.setCustomerBalance(this.sale.);
       this.setProductStock(this.sale.product._id);
     }
   }
@@ -65,8 +62,8 @@ export class SaleCreateComponent implements OnInit, OnChanges {
       }
     });
     this.customerBalance = customer.balance;
-  }
-  private updateCustomerBalance() {
+  } */
+  /* private updateCustomerBalance() {
     this.form.controls['customerId'].valueChanges.subscribe((customerId) => {
       this.setCustomerBalance(customerId);
     });
@@ -83,28 +80,16 @@ export class SaleCreateComponent implements OnInit, OnChanges {
       }
     });
     this.productStock = product['stock'];
-  }
+  } */
   private initializeForm(): void {
-    const { quantity, salePrice, amountRecieved   } = this.sale;
-    let { totalPrice, balance } = this.sale;
-    const currentDate = this.datePipe.transform(new Date(), 'fullDate');
-    let productId: string, customerId: string;
-    if (this.sale._id) {
-      productId = this.sale.product._id;
-      customerId = this.sale.customer._id;
-    } else {
-      totalPrice = 0;
-      balance = 0;
-    }
+    const { customerId, productId, quantity, price } = this.sale;
+
     this.form = this.fb.group({
-      customerId: [{value: customerId, disabled: this.isEditMode}],
+      customerId: [{ value: customerId }],
       productId: [productId, [Validators.required]],
       quantity: [quantity, [Validators.required]],
-      salePrice: [salePrice],
-      totalPrice: [{value: totalPrice, disabled: true}],
-      amountRecieved: [amountRecieved],
-      balance: [{value: balance, disabled: true}],
-      saleDate: [currentDate],
+      price: [price]
+
     });
   }
 

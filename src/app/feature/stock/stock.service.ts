@@ -10,21 +10,13 @@ import { Stock } from './stock.model';
 })
 export class StockService {
 
-  private readonly stockUrl = 'stocks';
+  private readonly stockUrl = 'stock';
   constructor(private http: HttpClient) { }
 
   getStocks(): Observable<any[]> {
     return this.http.get<any[]>(this.stockUrl)
       .pipe(
-        map(data => {
-          return data.map(stock => {
-            const { product, price, quantity, totalPrice, purchaseDate } = stock;
-            const id = stock._id;
-            return {
-              id, product, price, quantity, totalPrice, purchaseDate
-            };
-          });
-        })
+        map(response => response['data'])
       );
   }
 

@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Sale } from './sale.model';
 import { SaleService } from './sale.service';
-import { CustomerService } from '../customer/customer.service';
-import { ProductService } from '../product/product.service';
 import { Customer } from '../customer/customer.model';
 import { Product } from '../product/product.model';
 import { forkJoin } from 'rxjs';
+import { ReportService } from '../report/report.service';
 
 @Component({
   selector: 'app-sale',
@@ -20,8 +19,7 @@ export class SaleComponent implements OnInit {
   products: Product[];
 
   constructor(private saleService: SaleService,
-              private customerService: CustomerService,
-              private productService: ProductService) { }
+              private reportService: ReportService) { }
 
   ngOnInit() {
     this.getSales();
@@ -39,22 +37,26 @@ export class SaleComponent implements OnInit {
       });
   }
   getProductCustomerData(sale: Sale) {
-    forkJoin(
-      this.customerService.getCustomers(),
-      this.productService.getProducts()
-    ).subscribe(([customerData, productData]) => {
-      this.customers = customerData;
-      this.products = productData;
-      this.selectedSale = sale;
-    });
+    this.getCustomers();
+    this.getProducts();
+    this.selectedSale = sale;
+
+    // forkJoin(
+    //   this.customerService.getCustomers(),
+    //   this.productService.getProducts()
+    // ).subscribe(([customerData, productData]) => {
+    //   this.customers = customerData;
+    //   this.products = productData;
+    //   this.selectedSale = sale;
+    // });
   }
   getCustomers() {
-    this.customerService.getCustomers().subscribe((data) => {
+    this.reportService.getCustomers().subscribe((data) => {
       this.customers = data;
     });
   }
   getProducts() {
-    this.productService.getProducts().subscribe((data) => {
+    this.reportService.getProducts().subscribe((data) => {
       this.products = data;
     });
   }

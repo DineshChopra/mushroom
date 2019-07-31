@@ -1,17 +1,20 @@
 <div *ngIf="!selectedSale">
-  <div>
-    <button (click)="updateSelectedSale()">Create Sale</button>
+  <div class="container innerHeader">
+    <div class="row">
+      <div class="innerTitle">
+        <h2>Sales</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <button class="btn btn-default" (click)="updateSelectedSale()">Create Sale</button>
+      </div>
+    </div>
   </div>
-  <app-sale-list
-    [sales]="sales"
-    (editSaleEvent) = "onEditSaleEvent($event)"
-    (deleteSaleEvent) = "onDeleteSaleEvent($event)"></app-sale-list>
+
+  <app-sale-list [sales]="sales" (editSaleEvent)="onEditSaleEvent($event)"
+    (deleteSaleEvent)="onDeleteSaleEvent($event)">
+  </app-sale-list>
 </div>
-<app-sale-create 
-  *ngIf="selectedSale"
-  [sale] = "selectedSale"
-  [customers] = "customers"
-  [products] = "products"
-  (saleCreateEvent) = "onSaleCreateEvent($event)"
-  (cancelEvent) = "onCancelEvent()"
-  ></app-sale-create>
+<app-sale-create *ngIf="selectedSale" [sale]="selectedSale" [customers]="customers" [products]="products"
+  (saleCreateEvent)="onSaleCreateEvent($event)" (cancelEvent)="onCancelEvent()"></app-sale-create>

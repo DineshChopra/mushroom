@@ -1,11 +1,11 @@
 export class Sale {
-    _id: string;
-    product: any;
-    customer: any;
+    id: string;
+    /*product: any;
+     */customerId: any;
+    productId: number;
     quantity: number;
-    salePrice: number;
-    totalPrice: number;
-    amountRecieved: number;
+    price: number;
+    /* amountRecieved: number;
     balance: number;
-    saleDate: Date;
+    saleDate: Date; */
 }
