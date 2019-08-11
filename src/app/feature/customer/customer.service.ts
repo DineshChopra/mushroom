@@ -19,7 +19,7 @@ export class CustomerService {
     return this.http.get<any[]>(this.customersUrl)
                     .pipe(
                       map( data => {
-                        return data.map(customer => {
+                        return data['data'].map(customer => {
                           const {name, phone, email, balance, balanceLimit} = customer;
                           const id = customer._id;
                           return {

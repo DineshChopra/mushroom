@@ -1,9 +1,39 @@
-<nav>
-  <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
-  <a routerLink="/customer" routerLinkActive="active">Customer</a>
-  <a routerLink="/product" routerLinkActive="active">Product</a>
-  <a routerLink="/purchase" routerLinkActive="active">Purchase</a>
-  <a routerLink="/stock" routerLinkActive="active">Stock</a>
-  <a routerLink="/sale" routerLinkActive="active">Sale</a>
-  <a routerLink="/report" routerLinkActive="active">Report</a>
-</nav>
+<header id="navigation" class="navbar-fixed-top animated-header">
+  <div class="container">
+    <div class="navbar-header">
+      <!-- responsive nav button -->
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <!-- /responsive nav button -->
+
+      <!-- logo -->
+      <h1 class="navbar-brand">
+        <a href="#body"><img src="/assets/img/logo1.png" height="40" width="164" alt=""></a>
+      </h1>
+      <!-- /logo -->
+    </div>
+
+    <!-- main nav -->
+    <nav class="collapse navbar-collapse navbar-right" role="navigation">
+      <ul id="nav" class="nav navbar-nav menu">
+        <li ><a routerLink="/dashboard" routerLinkActive="active">Dashboard</a></li>
+        <li><a routerLink="/customer" routerLinkActive="active">Customer</a></li>
+        <li><a routerLink="/product" routerLinkActive="active">Product</a></li>
+        <li><a routerLink="/purchase" routerLinkActive="active">Purchase
+          </a></li>
+        <li><a routerLink="/stock" routerLinkActive="active">Stock</a></li>
+        <li><a routerLink="/sale" routerLinkActive="active">Sale</a></li>
+        
+        
+        <li><a routerLink="/report" routerLinkActive="active">Report</a></li>
+        <li><a href="#contact-form">Contact</a></li>
+      </ul>
+    </nav>
+    <!-- /main nav -->
+
+  </div>
+</header>
