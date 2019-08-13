@@ -11,9 +11,9 @@
       </div>
     </div>
   </div>
-
-  <app-purchase-list [purchases]='purchases' (editPurchase)="onEditPurchase($event)"
-    (deletePurchse)="onDeletePurchase($event)"></app-purchase-list>
+  <app-report-purchase-list></app-report-purchase-list>
+  <!-- <app-purchase-list [purchases]='purchases' (editPurchase)="onEditPurchase($event)"
+    (deletePurchse)="onDeletePurchase($event)"></app-purchase-list> -->
 
 </div>
 <app-purchase-create *ngIf="editPurchase" [purchases]='purchases' [products]='products'

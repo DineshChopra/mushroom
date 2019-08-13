@@ -66,7 +66,7 @@ export class ReportService {
     }
 
 
-    const url = 'sale';
+    const url = 'sale/report';
     return this.http.get(url, {params})
                     .pipe(
                       map(response => {

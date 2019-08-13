@@ -23,6 +23,13 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     ReportRoutingModule,
     ReactiveFormsModule
+  ],
+  exports: [
+    ReportCustomerListComponent,
+    ReportProductListComponent,
+    ReportPurchaseListComponent,
+    ReportStockListComponent,
+    ReportSaleListComponent,
   ]
 })
 export class ReportModule { }

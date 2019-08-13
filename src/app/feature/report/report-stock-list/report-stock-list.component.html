@@ -3,18 +3,12 @@
       <tr>
         <th>Product Name</th>
         <th>Quantity</th>
-        <th>Price</th>
-        <th>Total Price</th>
-        <th>Purchase Date</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let stock of stocks | async;" >
         <td>{{stock.productName}}</td>
         <td>{{stock.quantity}}</td>
-        <td>{{stock.price}}</td>
-        <td>{{stock.totalPrice}}</td>
-        <td>{{stock.purchaseDate  | date : 'mediumDate'}}</td>
       </tr>
     </tbody>
   </table>

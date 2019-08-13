@@ -6,6 +6,7 @@ import { SaleComponent } from './sale.component';
 import { SaleListComponent } from './sale-list/sale-list.component';
 import { SaleCreateComponent } from './sale-create/sale-create.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ReportModule } from '../report/report.module';
 
 @NgModule({
   declarations: [SaleComponent, SaleListComponent, SaleCreateComponent],
@@ -13,7 +14,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     SaleRoutingModule,
     ReactiveFormsModule,
-    DataTableModule
+    DataTableModule,
+    ReportModule
   ]
 })
 export class SaleModule { }
