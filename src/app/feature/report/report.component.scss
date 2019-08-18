@@ -1,0 +1,16 @@
+.leftPanel{    width: 30%;
+    float: left;}
+.rightPanel{float: left;
+    width: 70%;}
+.leftPanel::after,.leftPanel::before,.rightPanel::after,.rightPanel::before{
+    clear: both;
+}
+.leftPanel li{padding: 5px 10px;
+    background-color: #f9f9f9;
+    border-width: 0 1px 1px 0;
+    border-style: solid;
+    border-color: #ddd;}
+.leftPanel li a{
+    display: block;
+    cursor: pointer;
+}

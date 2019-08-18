@@ -1,7 +1,18 @@
 <div *ngIf="!selectedStock">
-  <div>
-    <button (click)="updateSelectedStock()">Create Stock</button>
+  <div class="container innerHeader">
+    <div class="row">
+      <div class="innerTitle">
+        <h2>Stock</h2>
+        <p>Dantes remained confused and silent by this explanation of the <br> thoughts which had unconsciously</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <button class="btn btn-default" (click)="updateSelectedStock()">Create Stock</button>
+      </div>
+    </div>
   </div>
+
   <app-stock-list
     [stocks]="stocks"
     [products] = "products"

@@ -1,14 +1,25 @@
 <div *ngIf="!selectedCustomer">
-  <div>
-    <button (click)="updateSelectedCustomer()">Create Customer</button>
-  </div>
-  <app-customer-list
+    <div class="container innerHeader">
+      <div class="row">
+        <div class="innerTitle">
+          <h2>Customers</h2>
+          <p>Dantes remained confused and silent by this explanation of the <br> thoughts which had unconsciously</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <button class="btn btn-default" (click)="updateSelectedCustomer()">Create Customer</button>
+        </div>
+      </div>
+    </div>
+  
+    <app-customer-list
     [customers]="customers"
     (editCustomerEvent)="onEditCustomerEvent($event)"
     (deleteCustomerEvent)="onDeleteCustomerEvent($event)"
     ></app-customer-list>
-</div>
-<app-customer-create
+  </div>
+  <app-customer-create
   *ngIf="selectedCustomer"
   [customer] = "selectedCustomer"
   (customerCreateEvent) = "onCustomerCreateEvent($event)"

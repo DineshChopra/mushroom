@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { DataTableModule} from 'angular-6-datatable';
 import { ReportRoutingModule } from './report-routing.module';
 import { ReportComponent } from './report.component';
 import { ReportCustomerListComponent } from './report-customer-list/report-customer-list.component';
@@ -22,7 +22,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     ReportRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DataTableModule
   ]
 })
 export class ReportModule { }
