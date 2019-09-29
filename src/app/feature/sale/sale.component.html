@@ -16,5 +16,6 @@
     (deleteSaleEvent)="onDeleteSaleEvent($event)">
   </app-sale-list>
 </div>
-<app-sale-create *ngIf="selectedSale" [sale]="selectedSale" [customers]="customers" [products]="products"
+<app-sale-create *ngIf="selectedSale" [sale]="selectedSale" [customers]="customers" 
+  [stocks]="stocks"
   (saleCreateEvent)="onSaleCreateEvent($event)" (cancelEvent)="onCancelEvent()"></app-sale-create>

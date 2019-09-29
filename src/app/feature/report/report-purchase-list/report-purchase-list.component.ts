@@ -15,7 +15,9 @@ export class ReportPurchaseListComponent implements OnInit {
   }
 
   getPurchases() {
-    this.purchases = this.service.getPurchases();
+    this.service.getPurchases().subscribe(data => {
+      this.purchases = data;
+    });
   }
 
 

@@ -9,16 +9,20 @@
     <div class="col-lg-4">
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <div class="form-group">
-          <label for="customerName">Customer Name</label>
-          <select class="form-control" formControlName="customerId">
+          <label for="customerName">Customer Name  
+            <span *ngIf="selectedCustomer">(balance : {{selectedCustomer?.totalBalance}})</span>
+          </label>
+          <select class="form-control" formControlName="customerId" (change) = "selectCustomer()">
             <option *ngFor="let customer of customers" [value]="customer.id">{{customer.name}}</option>
           </select>
           
         </div>
         <div class="form-group">
-          <label for="productName">Product Name</label>
-          <select formControlName="productId" class="form-control">
-            <option *ngFor="let product of products" [value]="product.id">{{product.name}}</option>
+          <label for="productName">Product Name
+              <span *ngIf="selectedProduct">(Available Stock : {{selectedProduct.quantity}})</span>
+          </label>
+          <select formControlName="productId" class="form-control" (change)="selectProduct()">
+            <option *ngFor="let stock of stocks" [value]="stock.productId">{{stock.productName}}</option>
           </select>
         </div>
         <div class="form-group">
@@ -27,9 +31,24 @@
             #quantity>
         </div>
         <div class="form-group">
-          <label for="salePrice">Price</label>
-          <input id="salePrice" class="form-control" formControlName="price" type="text" 
+          <label for="salePrice">Sale Price</label>
+          <input id="salePrice" class="form-control" formControlName="salePrice" type="text" 
             #salePrice>
+        </div>
+        <div class="form-group">
+          <label for="totalSalePrice">Total Sale Amount {{salePrice.value}}</label>
+          <input id="totalSalePrice" class="form-control" formControlName="totalSalePrice" type="text" 
+          readonly #totalSalePrice [value]="salePrice.value * quantity.value">
+        </div>
+        <div class="form-group">
+          <label for="amontReceived">Amount Reccieved</label>
+          <input id="amontReceived" class="form-control" formControlName="amontReceived" type="text" 
+            #amontReceived>
+        </div>
+        <div class="form-group">
+          <label for="balance">Balance</label>
+          <input id="balance" class="form-control" formControlName="balance" type="text" 
+            readonly #balance [value]="totalSalePrice.value - amontReceived.value">
         </div>
        
         <button class="btn btn-default" type="submit">{{action}}</button>

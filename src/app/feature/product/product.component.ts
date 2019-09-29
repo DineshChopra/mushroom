@@ -46,5 +46,8 @@ export class ProductComponent implements OnInit {
       }
     );
   }
+  onCancelEvent() {
+    this.selectedProduct = undefined;
+  }
 
 }

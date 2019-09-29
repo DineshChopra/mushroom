@@ -4,8 +4,9 @@ export class Sale {
      */customerId: any;
     productId: number;
     quantity: number;
-    price: number;
-    /* amountRecieved: number;
+    salePrice: number;
+    totalSalePrice: number;
+    amontReceived: number;
     balance: number;
-    saleDate: Date; */
+    //saleDate: Date;
 }

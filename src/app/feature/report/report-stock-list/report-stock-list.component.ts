@@ -15,6 +15,8 @@ export class ReportStockListComponent implements OnInit {
   }
 
   getStocks() {
-    this.stocks = this.service.getStocks();
+    this.service.getStocks().subscribe(data => {
+      this.stocks = data;
+    });
   }
 }

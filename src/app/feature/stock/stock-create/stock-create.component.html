@@ -1,17 +1,30 @@
-<div>
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      <select formControlName="productId">
-        <option *ngFor="let product of products" [value]="product.id">{{product.name}}</option>
-      </select>
-    <!-- <input formControlName="productId" type="text" placeholder="Product Name" class="form-control"> -->
-    <input formControlName="quantity" type="text" placeholder="Quantity" class="form-control">
-    <input formControlName="price" type="text" placeholder="Price" class="form-control">
-    <input formControlName="totalPrice" type="text" placeholder="Total Price" class="form-control" 
-            [value]="getTotalPrice()">
-    <input formControlName="purchaseDate" type="text" placeholder="Purchase Date" class="form-control">
-
-
-    <button type="submit">{{action}}</button>
-    <button (click)="cancel()">Cancel</button>
-  </form>
-</div>
+<div class="container" id="contact-form">
+    <div class="row">
+      <div class="title">
+        <h2>Stocks</h2>
+        <p>Dantes remained confused and silent by this explanation of the <br> thoughts which had unconsciously</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4"></div>
+      <div class="col-lg-4">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <label for="productId">Product Name</label>
+          <select formControlName="productId">
+            <option *ngFor="let product of products" [value]="product.id">{{product.name}}</option>
+          </select>
+          <label for="quantity">Quantity</label>
+          <input formControlName="quantity" type="text" placeholder="Quantity" class="form-control">
+          <label for="price">Price</label>
+          <input formControlName="price" type="text" placeholder="Price" class="form-control">
+          <label for="totalPrice">Total Price</label>
+          <input formControlName="totalPrice" type="text" placeholder="Total Price" class="form-control" 
+              [value]="getTotalPrice()">
+          <label for="purchaseDate">Purchase Date</label>
+          <input formControlName="purchaseDate" type="text" placeholder="Purchase Date" class="form-control">
+          <button class="btn btn-default" type="submit">{{action}}</button>
+          <button class="btn btn-default" type="button" (click)="cancel()">Cancel</button>
+        </form>
+      </div>
+    </div>
+  </div> 

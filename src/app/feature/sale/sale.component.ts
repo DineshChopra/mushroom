@@ -16,7 +16,7 @@ export class SaleComponent implements OnInit {
   selectedSale: Sale;
   sales: Sale[];
   customers: Customer[];
-  products: Product[];
+  stocks: Product[];
 
   constructor(private saleService: SaleService,
               private reportService: ReportService) { }
@@ -28,7 +28,7 @@ export class SaleComponent implements OnInit {
     // this.selectedSale = sale;
     this.getProductCustomerData(sale);
     // this.getCustomers();
-    // this.getProducts();
+    // this.getStocks();
   }
   getSales() {
     this.saleService.getSales().subscribe(
@@ -38,15 +38,15 @@ export class SaleComponent implements OnInit {
   }
   getProductCustomerData(sale: Sale) {
     this.getCustomers();
-    this.getProducts();
+    this.getStocks();
     this.selectedSale = sale;
 
     // forkJoin(
     //   this.customerService.getCustomers(),
-    //   this.productService.getProducts()
+    //   this.productService.getStocks()
     // ).subscribe(([customerData, productData]) => {
     //   this.customers = customerData;
-    //   this.products = productData;
+    //   this.stocks = productData;
     //   this.selectedSale = sale;
     // });
   }
@@ -55,9 +55,9 @@ export class SaleComponent implements OnInit {
       this.customers = data;
     });
   }
-  getProducts() {
-    this.reportService.getProducts().subscribe((data) => {
-      this.products = data;
+  getStocks() {
+    this.reportService.getStocks().subscribe((data) => {
+      this.stocks = data;
     });
   }
   onEditSaleEvent(sale: Sale) {

@@ -14,7 +14,7 @@ export class SaleCreateComponent implements OnInit, OnChanges {
 
   @Input() sale: Sale;
   @Input() customers: Customer[];
-  @Input() products: Product[];
+  @Input() stocks: Product[];
   @Output() saleCreateEvent = new EventEmitter();
   @Output() cancelEvent = new EventEmitter();
   form: FormGroup;
@@ -22,6 +22,8 @@ export class SaleCreateComponent implements OnInit, OnChanges {
   action = 'Save';
   customerBalance: any;
   productStock: any;
+  selectedCustomer: any;
+  selectedProduct: any;
 
   private datePipe = new DatePipe(navigator.language);
 
@@ -40,12 +42,37 @@ export class SaleCreateComponent implements OnInit, OnChanges {
   ngOnChanges() {
   }
   onSubmit() {
-    const sale = this.form.value;
-    const { productId, customerId, quantity, price } = sale;
-    let saleObj = { productId: productId, customerId: customerId, quantity, price};
+    let saleObj = this.form.value;
+    saleObj.totalSalePrice = saleObj.salePrice * saleObj.quantity;
+    saleObj.balance = saleObj.totalSalePrice - saleObj.amontReceived;
+
+    console.log('saleObj  --- ', saleObj);
+    // const { productId, customerId, quantity, salePrice, amontReceived, balance } = sale;
+    // let saleObj = { productId: productId, customerId: customerId, quantity, salePrice, amontReceived, balance};
     saleObj = { ...this.sale, ...saleObj };
     this.saleCreateEvent.emit(saleObj);
   }
+  selectCustomer() {
+    const customerId = this.form.value.customerId;
+    const customer = this.customers.find((customer: any) => {
+      if(customer.id == customerId) {
+        return customer;
+      }
+    });
+    this.selectedCustomer = customer;
+    console.log('customer --- ', customer);
+  }
+  selectProduct() {
+    const productId = this.form.value.productId;
+    const product = this.stocks.find((product: any) => {
+      if(product.id == productId) {
+        return productId;
+      }
+    });
+    this.selectedProduct = product;
+    console.log('product --- ', product);
+  }
+
   cancel() {
     this.cancelEvent.emit();
   }
@@ -82,14 +109,16 @@ export class SaleCreateComponent implements OnInit, OnChanges {
     this.productStock = product['stock'];
   } */
   private initializeForm(): void {
-    const { customerId, productId, quantity, price } = this.sale;
+    const { customerId, productId, quantity, salePrice, totalSalePrice, amontReceived, balance } = this.sale;
 
     this.form = this.fb.group({
       customerId: [{ value: customerId }],
       productId: [productId, [Validators.required]],
       quantity: [quantity, [Validators.required]],
-      price: [price]
-
+      salePrice: [salePrice],
+      totalSalePrice : [totalSalePrice],
+      amontReceived: [amontReceived],
+      balance: [balance]
     });
   }
 

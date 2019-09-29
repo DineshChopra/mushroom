@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DataTableModule} from 'angular-6-datatable';
 
 import { StockRoutingModule } from './stock-routing.module';
 import { StockComponent } from './stock.component';
@@ -14,6 +15,7 @@ import { ReportModule } from '../report/report.module';
     CommonModule,
     StockRoutingModule,
     ReactiveFormsModule,
+    DataTableModule,
     ReportModule
   ]
 })

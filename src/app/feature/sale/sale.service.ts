@@ -20,6 +20,7 @@ export class SaleService {
 
 
   saleCreate(sale: Sale) {
+    console.log('Sale object -- ',sale);
     if (sale.id) {
       return this.updateSale(sale);
     } else {
