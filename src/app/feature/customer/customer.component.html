@@ -16,8 +16,8 @@
     (editCustomerEvent)="onEditCustomerEvent($event)"
     (deleteCustomerEvent)="onDeleteCustomerEvent($event)"
     ></app-customer-list>
-</div>
-<app-customer-create
+  </div>
+  <app-customer-create
   *ngIf="selectedCustomer"
   [customer] = "selectedCustomer"
   (customerCreateEvent) = "onCustomerCreateEvent($event)"

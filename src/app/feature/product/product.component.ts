@@ -34,7 +34,9 @@ export class ProductComponent implements OnInit {
       }
     );
   }
-
+  onCancelEvent() {
+    this.selectedProduct = undefined;
+  }
   onEditProductEvent(product: Product) {
     this.selectedProduct = product;
     // this.onProductCreateEvent(product);

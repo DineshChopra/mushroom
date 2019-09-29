@@ -11,13 +11,12 @@
         </div>
       </div>
     </div>
-
     <app-product-list
     [products]="products"
     (editProductEvent) = "onEditProductEvent($event)"
     (deleteProductEvent) = "onDeleteProductEvent($event)"></app-product-list>
-</div>
-<app-product-create 
+  </div>
+  <app-product-create 
   *ngIf="selectedProduct"
   [product] = "selectedProduct"
   (productCreateEvent) = "onProductCreateEvent($event)"
