@@ -28,7 +28,7 @@
     "font-awesome": "^4.7.0",
     "rxjs": "~6.3.3",
     "socket.io-client": "^2.2.0",
-    "terser": "^3.14.1",
+    "terser": "^4.8.1",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
